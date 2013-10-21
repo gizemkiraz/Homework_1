@@ -1,0 +1,83 @@
+#include<stdio.h>     
+#include<string.h>
+#include<Windows.h>   //system("cls"); fonksiyonunu kullanabilmemiz için gerekli olan kütüphane.
+void main()
+{
+	
+	char kullaniciadi[80], sifre[11], hesapnumarasi[20] ;	//Gerekli değişkenlerin tanımlanması.
+	int  secenek, hesaptakipara = 500, eklenenpara, cekilenpara, gonderilecekpara; 
+	printf("Lutfen kullanici adinizi giriniz : "); 
+	gets(kullaniciadi);	 //Girilen kullanıcı adında boşluk olma durumuna karşılık scanf yerine gets kullanıldı.
+	printf("\n");       
+	printf("Lutfen sifrenizi giriniz : ");
+	gets(sifre);
+	while(1)         //Çıkış yapılana kadar işlemlerin tekrarlanması için sonsuz döngü oluşturduk.
+	{
+	 printf("\n\t\tMENU\t\t");        
+	 printf("\n");
+	 printf("Hesabinizdaki para miktarinizi ogrenmek icin-->1\n");
+	 printf("Hesabiniza para eklemek icin-->2\n");
+	 printf("Hesabinizdan para cekmek icin-->3\n");
+	 printf("Hesabinizdan baska bir hesaba para gondermek icin-->4\n");	
+   printf("Cikis icin-->5\n");
+	 scanf("%d",&secenek);          //Kullanıcının girdiği seçeneğin atanması.      
+	 printf("\n");
+	 if(secenek==5)                 //Döngüyü kırmak aynı zamanda çıkş yapmak için oluşturulmuş if yapısı.
+		 break;
+	 else if(secenek==1)           //Hesabınızdaki para miktarını gösteren if yapısı.
+		{
+		 system("cls");            //Ekrani temizler.
+		 printf("Hesabinizda bulunan para miktari %d TL'dir\n\n",hesaptakipara);
+		}
+	 else if(secenek==2)          //Hesabınıza istediğiniz parayı eklemek için oluşturulan if yapısı.
+	 {
+		system("cls");           //Ekrani temizler.
+		printf("Hesabiniza eklemek istediginiz miktari giriniz : ");
+		scanf("%d", &eklenenpara);
+		hesaptakipara=hesaptakipara+eklenenpara;
+		printf("Hesabınızda şuan bulunan para miktari :%d \n",hesaptakipara);
+	 }     		
+	
+	 else if(secenek==3)        //Hesabınızdan para çekmek istediğinizde kullanılacak if yapısı.
+	 {
+		system("cls");           //Ekrani temizler.
+		printf("Hesabinizdan cekmek istediginiz para miktarini giriniz : ");
+	    scanf("%d", &cekilenpara);
+		if(cekilenpara<=hesaptakipara)  //Hesabınızda çekmek istediğiniz kadar para olup olmadığını kontrol eden if-else yapısı.
+		{
+			printf("Hesabinizdan %d TL cekiliyor,lutfen bekleyiniz...\n",cekilenpara);
+			hesaptakipara = hesaptakipara-cekilenpara;
+			printf("Hesabinizda kalan para miktari : %d\n",hesaptakipara);
+		}
+		else
+			printf("Hesabinizda cekmek istediginiz kadar para bulunmamaktadir.\n");
+
+	  
+	 }
+	 else if(secenek==4)        //Hesabınızdan başka bir hesaba para göndermek için oluşturulmuş if yapısı.
+	 {  
+		system("cls");           //Ekrani temizler.
+		printf("Lutfen para gndermek istediginiz hesap numarasiniz giriniz : ");
+		scanf("%s", &hesapnumarasi);
+		printf("Lutfen gondermek istediginiz para miktarini giriniz : ");
+		scanf("%d", &gonderilecekpara);
+		if(gonderilecekpara<=hesaptakipara)//Hesabınızda göndermek istediğiniz kadar para olup olmadığını kontrol eden if-else yapısı.
+		{
+			printf("Hesabinizdan %d TL para cekiliyor,lutfen bekleyiniz...\n",gonderilecekpara);
+			hesaptakipara = hesaptakipara-gonderilecekpara;
+			printf("Hesabinizda kalan para miktari %d TL'dir.\n",hesaptakipara);
+		}
+		else
+			printf("Hesabinizda gondermek istediginiz kadar para bulunmamaktadir.\n");	
+	
+	}
+	
+		
+	else //Verilen seçeneklerden farklı bir sayı girildiğinde kontrol etmek amaçlı kurulmuş else yapısı.
+		printf("Islem yapabilmek icin lutfen verilen rakamlardan birini giriniz...\n");
+	
+	
+	
+}
+	printf("Hesabinizdan cikis yapmis bulunmaktasiniz,iyi gunler dileriz...\n");//Döngünün sonu.
+}
