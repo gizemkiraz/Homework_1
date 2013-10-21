@@ -1,7 +1,7 @@
 #include<stdio.h>
 void main()
 {
-	char sayi[4];	//Sayının daha rahat çözümlenebilmesi için dizi şeklinde tanımladık.
+	char sayi[5];	//Sayının daha rahat çözümlenebilmesi için dizi şeklinde tanımladık.
 	printf("Lutfen 4 basamakli bir sayi giriniz : \n"); 
 	scanf("%s", sayi);	
 	printf("%c tane binlik vardir.\n",sayi[0] ); //Sayıyı çözümlemek için dizi elemanlarına sırasıyla atanması.
